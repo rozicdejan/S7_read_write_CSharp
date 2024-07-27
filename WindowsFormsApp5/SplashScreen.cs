@@ -97,5 +97,10 @@ namespace WindowsFormsApp5
                 buttonCheckGoogle.Visible = true;
             }
         }
+
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

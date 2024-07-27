@@ -35,8 +35,8 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -86,16 +86,6 @@
             this.panel1.Size = new System.Drawing.Size(399, 440);
             this.panel1.TabIndex = 3;
             // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.panel2.Location = new System.Drawing.Point(399, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(5, 440);
-            this.panel2.TabIndex = 4;
-            // 
             // pictureBox1
             // 
             this.pictureBox1.BackgroundImage = global::WindowsFormsApp5.Properties.Resources.logo;
@@ -105,6 +95,16 @@
             this.pictureBox1.Size = new System.Drawing.Size(316, 131);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.panel2.Location = new System.Drawing.Point(399, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(5, 440);
+            this.panel2.TabIndex = 4;
             // 
             // SplashScreen
             // 
