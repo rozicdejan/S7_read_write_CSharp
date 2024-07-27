@@ -44,7 +44,7 @@
             // buttonCheckGoogle
             // 
             this.buttonCheckGoogle.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.buttonCheckGoogle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonCheckGoogle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonCheckGoogle.ForeColor = System.Drawing.SystemColors.ControlText;
             this.buttonCheckGoogle.Location = new System.Drawing.Point(553, 246);
             this.buttonCheckGoogle.Name = "buttonCheckGoogle";
@@ -57,11 +57,12 @@
             // labelStatus
             // 
             this.labelStatus.AutoSize = true;
-            this.labelStatus.Location = new System.Drawing.Point(498, 153);
+            this.labelStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.labelStatus.Location = new System.Drawing.Point(410, 421);
             this.labelStatus.Name = "labelStatus";
-            this.labelStatus.Size = new System.Drawing.Size(35, 13);
+            this.labelStatus.Size = new System.Drawing.Size(201, 16);
             this.labelStatus.TabIndex = 1;
-            this.labelStatus.Text = "label1";
+            this.labelStatus.Text = "Checking if device is accesible...";
             // 
             // progressBar1
             // 
@@ -87,9 +88,9 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.panel2.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel2.ForeColor = System.Drawing.SystemColors.ActiveBorder;
+            this.panel2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.panel2.Location = new System.Drawing.Point(399, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(5, 440);

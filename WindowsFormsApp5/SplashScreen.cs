@@ -15,8 +15,10 @@ namespace WindowsFormsApp5
 {
     public partial class SplashScreen : Form
     {
+        string ipaddr = "192.168.33.100";
         public SplashScreen()
         {
+            
             InitializeComponent();
             buttonCheckGoogle.Enabled = false;
             PingGoogle();
@@ -24,19 +26,23 @@ namespace WindowsFormsApp5
 
         private void SplashScreen_Load(object sender, EventArgs e)
         {
+            
+
             timer1.Enabled = true;
+            buttonCheckGoogle.Visible = false;
         }
         private async void PingGoogle()
         {
-            bool pingable = await Task.Run(() => PingHost("192.168.11.1"));
+            
+            bool pingable = await Task.Run(() => PingHost(ipaddr));
             if (pingable)
             {
                 buttonCheckGoogle.Enabled = true;
-                labelStatus.Text = "Google is reachable.";
+                labelStatus.Text = "Device is reachable @ " + ipaddr;
             }
             else
             {
-                labelStatus.Text = "Google is not reachable.";
+                labelStatus.Text = "Device is not reachable @ " + ipaddr;
             }
         }
         private bool PingHost(string host)
@@ -87,6 +93,8 @@ namespace WindowsFormsApp5
             if (progressBar1.Value == 99)
             {
                 buttonCheckGoogle.Enabled = true;
+                progressBar1.Visible = false;
+                buttonCheckGoogle.Visible = true;
             }
         }
     }
