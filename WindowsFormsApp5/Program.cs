@@ -16,7 +16,10 @@ namespace WindowsFormsApp5
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+
+            //disable main form - Form 1
+            //Application.Run(new Form1());
+            Application.Run(new SplashScreen());
         }
     }
 }
