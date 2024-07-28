@@ -54,6 +54,7 @@ namespace WindowsFormsApp5
                 _plc.Close();
             }
             while (_plc.IsConnected)  { } 
+            // exit method - close all popup and terminate application
             System.Windows.Forms.Application.Exit();
 
         }
