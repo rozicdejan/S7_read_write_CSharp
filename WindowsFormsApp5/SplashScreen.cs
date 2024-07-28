@@ -22,7 +22,10 @@ namespace WindowsFormsApp5
             
             InitializeComponent();
             buttonCheckGoogle.Enabled = false;
-            PingGoogle();
+            //PingGoogle();
+            CheckConnections();
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SplashScreen_FormClosing);
+
         }
 
         private void SplashScreen_Load(object sender, EventArgs e)
@@ -32,6 +35,27 @@ namespace WindowsFormsApp5
             timer1.Enabled = true;
             buttonCheckGoogle.Visible = false;
         }
+        private void SplashScreen_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            
+        }
+
+        private async void CheckConnections()
+        {
+            bool googlePingable = await Task.Run(() => PingHost("google.com"));
+            bool plcPingable = await Task.Run(() => PingHost("192.168.33.100"));
+            bool plcConnect = await Task.Run(() => TestPlcConnection());
+            if ( googlePingable && plcPingable && plcConnect)
+            {
+                buttonCheckGoogle.Enabled = true;
+                labelStatus.Text = "8.8.8.8 and PLC are reachable.";
+            }
+            else
+            {
+                labelStatus.Text = "8.8.8.8 or PLC is not reachable.";
+            }
+        }
+
         private async void PingGoogle()
         {
             
@@ -70,6 +94,25 @@ namespace WindowsFormsApp5
             return pingable;
 
 
+        }
+        private bool TestPlcConnection()
+        {
+            
+            using (var plc = new Plc(CpuType.S71200, "192.168.33.100", 0, 1))
+            {
+                
+                try
+                {
+                    
+                    
+                    plc.Open();
+                    return  plc.IsConnected;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+            }
         }
         private void buttonCheckGoogle_Click(object sender, EventArgs e)
         {
