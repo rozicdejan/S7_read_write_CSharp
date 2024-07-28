@@ -101,5 +101,17 @@
   <ItemGroup>
     <None Include="Resources\logo.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Posnetek zaslona 2024-02-23 151959.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gear_full.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gear_empty.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gear_full1.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
