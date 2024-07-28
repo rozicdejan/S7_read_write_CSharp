@@ -49,6 +49,9 @@ namespace WindowsFormsApp5
             {
                 buttonCheckGoogle.Enabled = true;
                 labelStatus.Text = "8.8.8.8 and PLC are reachable.";
+
+                buttonCheckGoogle.Visible = true;
+                progressBar1.Visible = false;
             }
             else
             {
