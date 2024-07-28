@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Net.NetworkInformation;
 using System.Windows.Forms;
 using System.Threading.Tasks;
+using S7.Net;
 
 namespace WindowsFormsApp5
 {
