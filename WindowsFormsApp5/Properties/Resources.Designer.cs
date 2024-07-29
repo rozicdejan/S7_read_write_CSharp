@@ -63,6 +63,16 @@ namespace WindowsFormsApp5.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap dafra_logo_noDAFRA {
+            get {
+                object obj = ResourceManager.GetObject("dafra_logo_noDAFRA", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap gear_empty {
             get {
                 object obj = ResourceManager.GetObject("gear_empty", resourceCulture);

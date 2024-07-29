@@ -138,5 +138,8 @@
   <ItemGroup>
     <None Include="Resources\OK.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dafra_logo_noDAFRA.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

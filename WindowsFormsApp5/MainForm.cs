@@ -14,7 +14,7 @@ namespace WindowsFormsApp5
     public partial class MainForm : Form
     {
         private Plc _plc;
-
+        private Timer timerClock;
         public MainForm()
         {
             
@@ -24,10 +24,18 @@ namespace WindowsFormsApp5
 
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
 
+            // Initialize and configure the timer for clock
+            timerClock = new Timer();
+            timerClock.Interval = 500; // .5 second
+            timerClock.Tick += new EventHandler(this.timerClock_Tick);
+
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            UpdateDateTime();
+            timerClock.Start();
+
             var plcIp = "192.168.33.100";
             _plc = new Plc(CpuType.S71200, plcIp, 0, 1);
             try
@@ -89,6 +97,21 @@ namespace WindowsFormsApp5
         private void buttonNodeRedWeb_Click(object sender, EventArgs e)
         {
             GlobalFunctions.OpenBrowser_webpage(GlobalData.WebPageAdresses.NodeRedaWebPageAdress);
+        }
+
+        private void panel4_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        //SYSTEM CLOCK SHOW
+        private void timerClock_Tick(object sender, EventArgs e)
+        {
+            UpdateDateTime();
+        }
+        private void UpdateDateTime()
+        {
+            labelDateandTime.Text = DateTime.Now.ToString("d-M-yyyy HH:mm");
         }
     }
 }
