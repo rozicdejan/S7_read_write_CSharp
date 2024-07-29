@@ -103,6 +103,26 @@ namespace WindowsFormsApp5.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap NOK {
+            get {
+                object obj = ResourceManager.GetObject("NOK", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap OK {
+            get {
+                object obj = ResourceManager.GetObject("OK", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Posnetek_zaslona_2024_02_23_151959 {
             get {
                 object obj = ResourceManager.GetObject("Posnetek zaslona 2024-02-23 151959", resourceCulture);

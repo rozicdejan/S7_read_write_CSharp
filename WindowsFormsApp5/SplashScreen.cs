@@ -16,7 +16,7 @@ namespace WindowsFormsApp5
 {
     public partial class SplashScreen : Form
     {
-        string ipaddr = "192.168.33.100";
+        string ipaddr = Properties.Settings.Default.plcipAddr;
         public SplashScreen()
         {
             
@@ -25,6 +25,7 @@ namespace WindowsFormsApp5
             //PingGoogle();
             CheckConnections();
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SplashScreen_FormClosing);
+            timer2.Enabled = true;
 
         }
 
@@ -39,23 +40,56 @@ namespace WindowsFormsApp5
         {
             
         }
-
+        bool plcConnect;
+        bool plcPingable;
         private async void CheckConnections()
         {
             bool googlePingable = await Task.Run(() => PingHost("google.com"));
-            bool plcPingable = await Task.Run(() => PingHost("192.168.33.100"));
-            bool plcConnect = await Task.Run(() => TestPlcConnection());
-            if ( googlePingable && plcPingable && plcConnect)
-            {
-                buttonCheckGoogle.Enabled = true;
-                labelStatus.Text = "8.8.8.8 and PLC are reachable.";
+             plcPingable = await Task.Run(() => PingHost("192.168.33.100"));
 
-                buttonCheckGoogle.Visible = true;
-                progressBar1.Visible = false;
+            bool isOnline = plcPingable;//&&googlePingable;
+            if (isOnline)
+            {
+                plcConnect = await Task.Run(() => TestPlcConnection());
+
+                if (plcConnect)
+                {
+                    buttonCheckGoogle.Enabled = true;
+                    labelStatus.Text = "WEB and PLC are reachable.";
+
+                    buttonCheckGoogle.Visible = true;
+                    progressBar1.Visible = false;
+                }
+                
             }
             else
             {
-                labelStatus.Text = "8.8.8.8 or PLC is not reachable.";
+                labelStatus.Text = "WEB or PLC is not reachable.";
+            }
+            //MessageBox.Show("end");
+
+            //update plc ping
+            updateLabelStatus(labelPlcPingStaus, plcPingable,  "PLC ping is OK", "PLC ping is NOT OK", pictureBoxPlcPing);
+            updateLabelStatus(labelPlcConnectionStatus, plcConnect, "Connection to PLC is OK", "Connection to PLC is NOT OK", pictureBoxPlcConnectionstatus);
+         
+
+            
+
+        }
+
+        private void updateLabelStatus(Label label, bool isPingaable, string isPingableString, string isNotPinagleString, PictureBox picture)
+        {
+            if (isPingaable)
+            {
+                label.Text = isPingableString;
+                label.ForeColor = Color.FromArgb(255,55,168,41);
+                picture.BackgroundImage = Properties.Resources.OK;
+            }
+            else
+            {
+                label.Text = isNotPinagleString;
+                label.ForeColor = Color.Red;
+                picture.BackgroundImage = Properties.Resources.NOK;
             }
         }
 
@@ -146,6 +180,16 @@ namespace WindowsFormsApp5
         }
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            CheckConnections();
+        }
+
+        private void labelStatus_Click(object sender, EventArgs e)
         {
 
         }

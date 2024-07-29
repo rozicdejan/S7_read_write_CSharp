@@ -28,18 +28,19 @@ namespace WindowsFormsApp5
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            _plc = new Plc(CpuType.S71200, "192.168.33.100", 0, 1);
+            var plcIp = "192.168.33.100";
+            _plc = new Plc(CpuType.S71200, plcIp, 0, 1);
             try
             {
                 _plc.Open();
                 if (_plc.IsConnected)
                 {
                     // Connection is successful, you can perform PLC operations here
-                    MessageBox.Show("Connected to PLC.");
+                    MessageBox.Show("Connected to PLC. @" + plcIp);
                 }
                 else
                 {
-                    MessageBox.Show("Failed to connect to PLC.");
+                    MessageBox.Show("Failed to connect to PLC. - Check PLC IP");
                 }
             }
             catch (Exception ex)

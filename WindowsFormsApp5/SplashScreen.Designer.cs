@@ -35,10 +35,16 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.labelPlcPingStaus = new System.Windows.Forms.Label();
+            this.labelPlcConnectionStatus = new System.Windows.Forms.Label();
+            this.pictureBoxPlcPing = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxPlcConnectionstatus = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPlcPing)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPlcConnectionstatus)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonCheckGoogle
@@ -63,6 +69,7 @@
             this.labelStatus.Size = new System.Drawing.Size(201, 16);
             this.labelStatus.TabIndex = 1;
             this.labelStatus.Text = "Checking if device is accesible...";
+            this.labelStatus.Click += new System.EventHandler(this.labelStatus_Click);
             // 
             // progressBar1
             // 
@@ -77,6 +84,11 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // timer2
+            // 
+            this.timer2.Interval = 3000;
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.pictureBox1);
@@ -85,16 +97,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(399, 440);
             this.panel1.TabIndex = 3;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackgroundImage = global::WindowsFormsApp5.Properties.Resources.logo;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(39, 153);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(316, 131);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
             // 
             // panel2
             // 
@@ -106,12 +108,64 @@
             this.panel2.Size = new System.Drawing.Size(5, 440);
             this.panel2.TabIndex = 4;
             // 
+            // labelPlcPingStaus
+            // 
+            this.labelPlcPingStaus.AutoSize = true;
+            this.labelPlcPingStaus.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.labelPlcPingStaus.Location = new System.Drawing.Point(445, 374);
+            this.labelPlcPingStaus.Name = "labelPlcPingStaus";
+            this.labelPlcPingStaus.Size = new System.Drawing.Size(109, 16);
+            this.labelPlcPingStaus.TabIndex = 5;
+            this.labelPlcPingStaus.Text = "PLC ping status...";
+            // 
+            // labelPlcConnectionStatus
+            // 
+            this.labelPlcConnectionStatus.AutoSize = true;
+            this.labelPlcConnectionStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.labelPlcConnectionStatus.Location = new System.Drawing.Point(445, 397);
+            this.labelPlcConnectionStatus.Name = "labelPlcConnectionStatus";
+            this.labelPlcConnectionStatus.Size = new System.Drawing.Size(148, 16);
+            this.labelPlcConnectionStatus.TabIndex = 6;
+            this.labelPlcConnectionStatus.Text = "PLC connection status...";
+            // 
+            // pictureBoxPlcPing
+            // 
+            this.pictureBoxPlcPing.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBoxPlcPing.Location = new System.Drawing.Point(413, 371);
+            this.pictureBoxPlcPing.Name = "pictureBoxPlcPing";
+            this.pictureBoxPlcPing.Size = new System.Drawing.Size(20, 20);
+            this.pictureBoxPlcPing.TabIndex = 7;
+            this.pictureBoxPlcPing.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = global::WindowsFormsApp5.Properties.Resources.logo;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Location = new System.Drawing.Point(39, 153);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(316, 131);
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictureBoxPlcConnectionstatus
+            // 
+            this.pictureBoxPlcConnectionstatus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBoxPlcConnectionstatus.Location = new System.Drawing.Point(413, 393);
+            this.pictureBoxPlcConnectionstatus.Name = "pictureBoxPlcConnectionstatus";
+            this.pictureBoxPlcConnectionstatus.Size = new System.Drawing.Size(20, 20);
+            this.pictureBoxPlcConnectionstatus.TabIndex = 8;
+            this.pictureBoxPlcConnectionstatus.TabStop = false;
+            // 
             // SplashScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.pictureBoxPlcConnectionstatus);
+            this.Controls.Add(this.pictureBoxPlcPing);
+            this.Controls.Add(this.labelPlcConnectionStatus);
+            this.Controls.Add(this.labelPlcPingStaus);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.progressBar1);
@@ -123,7 +177,9 @@
             this.Text = "SplashScreen";
             this.Load += new System.EventHandler(this.SplashScreen_Load);
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPlcPing)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPlcConnectionstatus)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -139,5 +195,9 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label labelPlcPingStaus;
+        private System.Windows.Forms.Label labelPlcConnectionStatus;
+        private System.Windows.Forms.PictureBox pictureBoxPlcPing;
+        private System.Windows.Forms.PictureBox pictureBoxPlcConnectionstatus;
     }
 }
