@@ -82,7 +82,7 @@ namespace WindowsFormsApp5
             if (isPingaable)
             {
                 label.Text = isPingableString;
-                label.ForeColor = Color.FromArgb(255,55,168,41);
+                label.ForeColor = GlobalData.mySpecialColor.ColorGreen;
                 picture.BackgroundImage = Properties.Resources.OK;
             }
             else
