@@ -87,10 +87,10 @@
             this.panel1.Controls.Add(this.panel6);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.panel1.Location = new System.Drawing.Point(0, 507);
+            this.panel1.Location = new System.Drawing.Point(0, 510);
             this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1067, 47);
+            this.panel1.Size = new System.Drawing.Size(1067, 44);
             this.panel1.TabIndex = 4;
             // 
             // panel2
@@ -114,7 +114,7 @@
             this.panel3.Location = new System.Drawing.Point(0, 10);
             this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(186, 497);
+            this.panel3.Size = new System.Drawing.Size(186, 500);
             this.panel3.TabIndex = 6;
             // 
             // panel4
@@ -125,7 +125,7 @@
             this.panel4.Location = new System.Drawing.Point(186, 10);
             this.panel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(489, 497);
+            this.panel4.Size = new System.Drawing.Size(489, 500);
             this.panel4.TabIndex = 7;
             this.panel4.Paint += new System.Windows.Forms.PaintEventHandler(this.panel4_Paint);
             // 
@@ -137,7 +137,7 @@
             this.panel5.Location = new System.Drawing.Point(675, 10);
             this.panel5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(392, 497);
+            this.panel5.Size = new System.Drawing.Size(392, 500);
             this.panel5.TabIndex = 8;
             // 
             // button1
@@ -156,7 +156,7 @@
             // 
             this.pictureBox1.BackgroundImage = global::WindowsFormsApp5.Properties.Resources.dafra_logo_noDAFRA;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(154, 8);
+            this.pictureBox1.Location = new System.Drawing.Point(154, 6);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(30, 30);
             this.pictureBox1.TabIndex = 0;
@@ -166,7 +166,7 @@
             // 
             this.labelDateandTime.AutoSize = true;
             this.labelDateandTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelDateandTime.Location = new System.Drawing.Point(26, 15);
+            this.labelDateandTime.Location = new System.Drawing.Point(35, 14);
             this.labelDateandTime.Name = "labelDateandTime";
             this.labelDateandTime.Size = new System.Drawing.Size(106, 16);
             this.labelDateandTime.TabIndex = 1;
@@ -180,7 +180,7 @@
             this.panel6.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel6.Location = new System.Drawing.Point(870, 0);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(197, 47);
+            this.panel6.Size = new System.Drawing.Size(197, 44);
             this.panel6.TabIndex = 2;
             // 
             // MainForm
