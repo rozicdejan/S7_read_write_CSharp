@@ -80,5 +80,15 @@ namespace WindowsFormsApp5
         {
             this.button1.BackgroundImage = ((System.Drawing.Image)(Properties.Resources.gear_full1));
         }
+
+        private void buttonOpenGrafana_Click(object sender, EventArgs e)
+        {
+            GlobalFunctions.OpenBrowser_webpage(GlobalData.WebPageAdresses.GrafanaWebPageAdress);
+        }
+
+        private void buttonNodeRedWeb_Click(object sender, EventArgs e)
+        {
+            GlobalFunctions.OpenBrowser_webpage(GlobalData.WebPageAdresses.NodeRedaWebPageAdress);
+        }
     }
 }

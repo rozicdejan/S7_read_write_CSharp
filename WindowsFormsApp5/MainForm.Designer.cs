@@ -30,6 +30,8 @@
         {
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.buttonOpenGrafana = new System.Windows.Forms.Button();
+            this.buttonNodeRedWeb = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button2
@@ -53,11 +55,33 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // buttonOpenGrafana
+            // 
+            this.buttonOpenGrafana.Location = new System.Drawing.Point(503, 12);
+            this.buttonOpenGrafana.Name = "buttonOpenGrafana";
+            this.buttonOpenGrafana.Size = new System.Drawing.Size(106, 35);
+            this.buttonOpenGrafana.TabIndex = 2;
+            this.buttonOpenGrafana.Text = "Grafana WEB";
+            this.buttonOpenGrafana.UseVisualStyleBackColor = true;
+            this.buttonOpenGrafana.Click += new System.EventHandler(this.buttonOpenGrafana_Click);
+            // 
+            // buttonNodeRedWeb
+            // 
+            this.buttonNodeRedWeb.Location = new System.Drawing.Point(503, 53);
+            this.buttonNodeRedWeb.Name = "buttonNodeRedWeb";
+            this.buttonNodeRedWeb.Size = new System.Drawing.Size(106, 35);
+            this.buttonNodeRedWeb.TabIndex = 3;
+            this.buttonNodeRedWeb.Text = "NodeRed WEB";
+            this.buttonNodeRedWeb.UseVisualStyleBackColor = true;
+            this.buttonNodeRedWeb.Click += new System.EventHandler(this.buttonNodeRedWeb_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.buttonNodeRedWeb);
+            this.Controls.Add(this.buttonOpenGrafana);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Name = "MainForm";
@@ -72,5 +96,7 @@
 
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button buttonOpenGrafana;
+        private System.Windows.Forms.Button buttonNodeRedWeb;
     }
 }
