@@ -12,40 +12,43 @@ namespace WindowsFormsApp5
     {
 
          /*
-        | PLC S7-1200 Data Type | C# Data Type      | Description                               |
-        |-----------------------|-------------------|-------------------------------------------|
-        | BOOL                  | bool              | Boolean value (true or false)             |
-        | BYTE                  | byte              | 8-bit unsigned integer                    |
-        | WORD                  | ushort            | 16-bit unsigned integer                   |
-        | DWORD                 | uint              | 32-bit unsigned integer                   |
-        | INT                   | short             | 16-bit signed integer                     |
-        | DINT                  | int               | 32-bit signed integer                     |
-        | REAL                  | float             | 32-bit IEEE 754 floating-point number     |
-        | LREAL                 | double            | 64-bit IEEE 754 floating-point number     |
-        | CHAR                  | char              | Single 8-bit ASCII character              |
-        | STRING                | string            | Array of characters (null-terminated)     |
-        | S5TIME                | int               | S5 Time (16-bit, requires conversion)     |
-        | TIME                  | uint              | IEC time (32-bit unsigned integer)        |
-        | DATE                  | DateTime          | Date (converted to .NET DateTime)         |
-        | TIME_OF_DAY           | DateTime          | Time of day (converted to .NET DateTime)  |
-        | DATE_AND_TIME         | DateTime          | Date and time (converted to .NET DateTime)|
+        | PLC S7-1200 Data Type | C# Data Type      | Description                               | Attribute                           |
+        |-----------------------|-------------------|-------------------------------------------|-------------------------------------|
+        | BOOL                  | bool              | Boolean value (true or false)             | [MarshalAs(UnmanagedType.U1)]       |
+        | BYTE                  | byte              | 8-bit unsigned integer                    | [MarshalAs(UnmanagedType.U1)]       |
+        | WORD                  | ushort            | 16-bit unsigned integer                   | [MarshalAs(UnmanagedType.U2)]       |
+        | DWORD                 | uint              | 32-bit unsigned integer                   | [MarshalAs(UnmanagedType.U4)]       |
+        | INT                   | short             | 16-bit signed integer                     | [MarshalAs(UnmanagedType.I2)]       |
+        | DINT                  | int               | 32-bit signed integer                     | [MarshalAs(UnmanagedType.I4)]       |
+        | REAL                  | float             | 32-bit IEEE 754 floating-point number     | [MarshalAs(UnmanagedType.R4)]       |
+        | LREAL                 | double            | 64-bit IEEE 754 floating-point number     | [MarshalAs(UnmanagedType.R8)]       |
+        | CHAR                  | char              | Single 8-bit ASCII character              | [MarshalAs(UnmanagedType.I1)]       |
+        | STRING                | string            | Array of characters (null-terminated)     | [MarshalAs(UnmanagedType.LPStr)]    |
+        | S5TIME                | int               | S5 Time (16-bit, requires conversion)     | [MarshalAs(UnmanagedType.I4)]       |
+        | TIME                  | uint              | IEC time (32-bit unsigned integer)        | [MarshalAs(UnmanagedType.U4)]       |
+        | DATE                  | DateTime          | Date (converted to .NET DateTime)         | [MarshalAs(UnmanagedType.Struct)]   |
+        | TIME_OF_DAY           | DateTime          | Time of day (converted to .NET DateTime)  | [MarshalAs(UnmanagedType.Struct)]   |
+        | DATE_AND_TIME         | DateTime          | Date and time (converted to .NET DateTime)| [MarshalAs(UnmanagedType.Struct)]   |
         */
 
+
         //******************************** PLC DATA DB**************************************//
-        [StructLayout(LayoutKind.Sequential, Pack = 1)]
-        public class PlcData
+        //[StructLayout(LayoutKind.Sequential, Pack = 1)]
+           public  class PlcDataRead
         {
-            [MarshalAs(UnmanagedType.U1)]
-            public byte Tag1;
+            //[MarshalAs(UnmanagedType.U1)]
+            public  byte Tag1 { get; set; }
 
-            [MarshalAs(UnmanagedType.U1)]
-            public byte Tag2;
+           //[MarshalAs(UnmanagedType.U1)]
+            public  byte Tag2 { get; set; }
 
-            [MarshalAs(UnmanagedType.U1)]
-            public byte Tag3;
+          // [MarshalAs(UnmanagedType.U1)]
+            public  byte Tag3 { get; set; }
 
-            [MarshalAs(UnmanagedType.R4)]
-            public float Tag4; // Real value (4 bytes)
+           // MarshalAs(UnmanagedType.U4)]
+            public  byte Tag4 { get; set; } // Real value (4 bytes)
+
+            //check why properties works but witout propertis - only class id does not works!
         }
         public static class mySpecialColor
         {
@@ -69,12 +72,12 @@ namespace WindowsFormsApp5
         public static class PlcGlobalData
         {
             private static readonly string _plcAddr = Properties.Settings.Default.plcipAddr;
-            private static readonly uint _plcPos = Properties.Settings.Default.Plcpos;
-            private static readonly uint _plcRack = Properties.Settings.Default.plcRack;
+            private static readonly short _plcPos = Properties.Settings.Default.Plcpos;
+            private static readonly short _plcRack = Properties.Settings.Default.plcRack;
 
             public static string PLC_IP { get { return _plcAddr; } }
-            public static uint PLC_POS { get { return _plcPos; } }
-            public static uint PLC_RACK { get { return _plcRack; } }
+            public static short PLC_POS { get { return _plcPos; } }
+            public static short PLC_RACK { get { return _plcRack; } }
         }
     }   
 }

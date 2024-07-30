@@ -5,10 +5,10 @@
     <Setting Name="plcipAddr" Type="System.String" Scope="User">
       <Value Profile="(Default)">192.168.33.100</Value>
     </Setting>
-    <Setting Name="plcRack" Type="System.UInt32" Scope="User">
+    <Setting Name="plcRack" Type="System.Int16" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="Plcpos" Type="System.UInt32" Scope="User">
+    <Setting Name="Plcpos" Type="System.Int16" Scope="User">
       <Value Profile="(Default)">1</Value>
     </Setting>
   </Settings>

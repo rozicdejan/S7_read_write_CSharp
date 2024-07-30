@@ -38,9 +38,9 @@ namespace WindowsFormsApp5.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public uint plcRack {
+        public short plcRack {
             get {
-                return ((uint)(this["plcRack"]));
+                return ((short)(this["plcRack"]));
             }
             set {
                 this["plcRack"] = value;
@@ -50,9 +50,9 @@ namespace WindowsFormsApp5.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("1")]
-        public uint Plcpos {
+        public short Plcpos {
             get {
-                return ((uint)(this["Plcpos"]));
+                return ((short)(this["Plcpos"]));
             }
             set {
                 this["Plcpos"] = value;

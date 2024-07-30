@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using S7.Net;
@@ -14,10 +9,11 @@ namespace WindowsFormsApp5
     public partial class MainForm : Form
     {
         private Plc _plc;
-        private Timer timerClock;
+        private System.Windows.Forms.Timer timerClock;
+        private CancellationTokenSource _cancellationTokenSource;
+
         public MainForm()
         {
-            
             InitializeComponent();
             button1.MouseEnter += new EventHandler(button1_MouseEnter);
             button1.MouseLeave += new EventHandler(button1_MouseLeave);
@@ -25,26 +21,34 @@ namespace WindowsFormsApp5
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
 
             // Initialize and configure the timer for clock
-            timerClock = new Timer();
-            timerClock.Interval = 500; // .5 second
+            timerClock = new System.Windows.Forms.Timer();
+            timerClock.Interval = 500; // 0.5 second
             timerClock.Tick += new EventHandler(this.timerClock_Tick);
-
         }
 
-        private void MainForm_Load(object sender, EventArgs e)
+        private async void MainForm_Load(object sender, EventArgs e)
         {
+            // Update time in footer
             UpdateDateTime();
             timerClock.Start();
 
-            var plcIp = "192.168.33.100";
-            _plc = new Plc(CpuType.S71200, plcIp, 0, 1);
+            // Initialize PLC connection
+            string ipAddress = GlobalData.PlcGlobalData.PLC_IP;
+            short rack = GlobalData.PlcGlobalData.PLC_RACK;
+            short slot = GlobalData.PlcGlobalData.PLC_POS;
+
+            _plc = new Plc(CpuType.S71200, ipAddress, rack, slot);
+
             try
             {
                 _plc.Open();
                 if (_plc.IsConnected)
                 {
-                    // Connection is successful, you can perform PLC operations here
-                    MessageBox.Show("Connected to PLC. @" + plcIp);
+                    // Connection is successful, start reading data
+                    MessageBox.Show("Connected to PLC. @" + ipAddress);
+
+                    _cancellationTokenSource = new CancellationTokenSource();
+                    await StartReadingDataAsync(_cancellationTokenSource.Token);
                 }
                 else
                 {
@@ -56,33 +60,76 @@ namespace WindowsFormsApp5
                 MessageBox.Show($"Failed to connect to PLC: {ex.Message}");
             }
         }
+
+        private async Task StartReadingDataAsync(CancellationToken cancellationToken)
+        {
+            while (!cancellationToken.IsCancellationRequested)
+            {
+                await ReadDataFromPlcAsync();
+                await Task.Delay(1000, cancellationToken); // Wait for 1 second
+            }
+        }
+
+        private async Task ReadDataFromPlcAsync()
+        {
+            try
+            {
+                if (_plc.IsConnected)
+                {
+                    // Read the data from DB1, starting at offset 0
+                    GlobalData.PlcDataRead data = _plc.ReadClass<GlobalData.PlcDataRead>(1, 0);
+
+                    // Display the read data
+                    DisplayData(data);
+                }
+                else
+                {
+                    MessageBox.Show("PLC is not connected.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error reading data: " + ex.Message);
+            }
+        }
+
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
+            // Cancel the background task
+            if (_cancellationTokenSource != null)
+            {
+                _cancellationTokenSource.Cancel();
+            }
+
+            // Ensure the connection is closed
             if (_plc != null && _plc.IsConnected)
             {
                 _plc.Close();
             }
-            while (_plc.IsConnected)  { } 
-            // exit method - close all popup and terminate application
-            System.Windows.Forms.Application.Exit();
 
+            // Allow the form to close normally
+            e.Cancel = false;
+            Application.Exit();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void DisplayData(GlobalData.PlcDataRead data)
         {
-
+            // Display the data on your form (e.g., in text boxes or labels)
+            tag100Label.Text = data.Tag1.ToString();
+            tag101Label.Text = data.Tag2.ToString();
+            tag102Label.Text = data.Tag3.ToString();
+            tag103Label.Text = data.Tag4.ToString();
+            
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
+        private void button1_Click(object sender, EventArgs e) { }
 
-        }
+        private void button2_Click(object sender, EventArgs e) { }
 
         void button1_MouseLeave(object sender, EventArgs e)
         {
             this.button1.BackgroundImage = ((System.Drawing.Image)(Properties.Resources.gear_empty));
         }
-
 
         void button1_MouseEnter(object sender, EventArgs e)
         {
@@ -99,16 +146,14 @@ namespace WindowsFormsApp5
             GlobalFunctions.OpenBrowser_webpage(GlobalData.WebPageAdresses.NodeRedaWebPageAdress);
         }
 
-        private void panel4_Paint(object sender, PaintEventArgs e)
-        {
+        private void panel4_Paint(object sender, PaintEventArgs e) { }
 
-        }
-
-        //SYSTEM CLOCK SHOW
+        // SYSTEM CLOCK SHOW
         private void timerClock_Tick(object sender, EventArgs e)
         {
             UpdateDateTime();
         }
+
         private void UpdateDateTime()
         {
             labelDateandTime.Text = DateTime.Now.ToString("d-M-yyyy HH:mm");
