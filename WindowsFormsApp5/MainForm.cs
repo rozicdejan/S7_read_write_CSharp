@@ -41,31 +41,43 @@ namespace WindowsFormsApp5
             }
             catch (OperationCanceledException)
             {
-                // Handle cancellation (if needed)
+                // Handle cancellation if needed
+            }
+            catch (Exception ex)
+            {
+                // Handle any other exceptions if needed
+                MessageBox.Show("Error: " + ex.Message);
             }
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
+            
             // Request cancellation
-            _cancellationTokenSource?.Cancel();
+            //_cancellationTokenSource?.Cancel();
 
-            // Optionally, wait for ongoing tasks to finish
-            // You might want to use a timeout here
-            _cancellationTokenSource?.Dispose();
+            // Stop the timer
+            timerClock.Stop();
 
             // Ensure PLC is closed
             if (_plc != null && _plc.IsConnected)
             {
                 _plc.Close();
             }
+
+            // Clean up background tasks
+            _cancellationTokenSource?.Dispose();
+
+            // Allow time for the tasks to cancel
+            //Task.Delay(500).Wait();
+            Application.Exit();
         }
 
         private async Task ReadDataFromPlcAsync(CancellationToken cancellationToken)
         {
-            string ipAddress = GlobalData.PlcGlobalData.PLC_IP; // IP address of the PLC
-            short rack = GlobalData.PlcGlobalData.PLC_RACK; // Typically, the main rack is numbered 0
-            short slot = GlobalData.PlcGlobalData.PLC_POS; // Slot number where the CPU is installed
+            string ipAddress = GlobalData.PlcGlobalData.PLC_IP;
+            short rack = GlobalData.PlcGlobalData.PLC_RACK;
+            short slot = GlobalData.PlcGlobalData.PLC_POS;
             int timeoutMilliseconds = 3000; // 3 seconds
 
             Plc plc = new Plc(CpuType.S71200, ipAddress, rack, slot);

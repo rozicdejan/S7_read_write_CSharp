@@ -69,7 +69,7 @@
             this.labelStatus.Size = new System.Drawing.Size(201, 16);
             this.labelStatus.TabIndex = 1;
             this.labelStatus.Text = "Checking if device is accesible...";
-            this.labelStatus.Click += new System.EventHandler(this.labelStatus_Click);
+            //this.labelStatus.Click += new System.EventHandler(this.labelStatus_Click);
             // 
             // progressBar1
             // 

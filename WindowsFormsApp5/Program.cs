@@ -1,25 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp5
 {
     static class Program
     {
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
         [STAThread]
         static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            //disable main form - Form 1
-            //Application.Run(new Form1());
-            Application.Run(new SplashScreen());
+            // Run the SplashScreen and then the MainForm
+            SplashScreen splashScreen = new SplashScreen();
+            splashScreen.FormClosed += (sender, args) => Application.Exit();
+            Application.Run(splashScreen);
         }
     }
 }
