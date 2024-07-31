@@ -145,5 +145,8 @@
   <ItemGroup>
     <None Include="Resources\dafra_logo_noDAFRA.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\progressive-stamping-tool.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

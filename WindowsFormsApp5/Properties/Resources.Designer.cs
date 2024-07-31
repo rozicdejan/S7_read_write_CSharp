@@ -139,5 +139,15 @@ namespace WindowsFormsApp5.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap progressive_stamping_tool {
+            get {
+                object obj = ResourceManager.GetObject("progressive-stamping-tool", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

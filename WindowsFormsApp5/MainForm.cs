@@ -227,10 +227,10 @@ namespace WindowsFormsApp5
             // Display the data on your form (e.g., in text boxes or labels)
             if (!IsDisposed)
             {
-                tag100Label.Text = data.Tag1.ToString();
-                tag101Label.Text = data.Tag2.ToString();
-                tag102Label.Text = data.Tag3.ToString();
-                tag103Label.Text = data.Tag4.ToString();
+                tag100Label.Text = data.Tag1.ToString() + " °C";
+                tag101Label.Text = data.Tag2.ToString() + " °C";
+                tag102Label.Text = data.Tag3.ToString() + " °C";
+                tag103Label.Text = data.Tag4.ToString() + " °C";
                 //tag5Label.Text = data.Tag5.ToString();
                 //tag6CheckBox.Checked = data.Tag6;
                 //tag7CheckBox.Checked = data.Tag7;
