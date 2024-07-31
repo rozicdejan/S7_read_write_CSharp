@@ -28,7 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button2 = new System.Windows.Forms.Button();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.buttonOpenGrafana = new System.Windows.Forms.Button();
             this.buttonNodeRedWeb = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -39,29 +44,21 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.tag100Label = new System.Windows.Forms.Label();
-            this.tag101Label = new System.Windows.Forms.Label();
-            this.tag102Label = new System.Windows.Forms.Label();
             this.tag103Label = new System.Windows.Forms.Label();
+            this.tag102Label = new System.Windows.Forms.Label();
+            this.tag101Label = new System.Windows.Forms.Label();
+            this.tag100Label = new System.Windows.Forms.Label();
+            this.temperatureChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.button2 = new System.Windows.Forms.Button();
+            this.panel5 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.temperatureChart)).BeginInit();
             this.panel5.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(48, 132);
-            this.button2.Margin = new System.Windows.Forms.Padding(4);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(289, 128);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // buttonOpenGrafana
             // 
@@ -91,10 +88,10 @@
             this.panel1.Controls.Add(this.panel6);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.panel1.Location = new System.Drawing.Point(0, 510);
+            this.panel1.Location = new System.Drawing.Point(0, 718);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1067, 44);
+            this.panel1.Size = new System.Drawing.Size(1369, 44);
             this.panel1.TabIndex = 4;
             // 
             // panel6
@@ -103,7 +100,7 @@
             this.panel6.Controls.Add(this.labelDateandTime);
             this.panel6.Controls.Add(this.pictureBox1);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel6.Location = new System.Drawing.Point(870, 0);
+            this.panel6.Location = new System.Drawing.Point(1172, 0);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(197, 44);
             this.panel6.TabIndex = 2;
@@ -136,7 +133,7 @@
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1067, 10);
+            this.panel2.Size = new System.Drawing.Size(1369, 10);
             this.panel2.TabIndex = 5;
             // 
             // panel3
@@ -149,18 +146,23 @@
             this.panel3.Location = new System.Drawing.Point(0, 10);
             this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(186, 500);
+            this.panel3.Size = new System.Drawing.Size(186, 708);
             this.panel3.TabIndex = 6;
             // 
             // panel4
             // 
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel4.Controls.Add(this.tag103Label);
+            this.panel4.Controls.Add(this.temperatureChart);
+            this.panel4.Controls.Add(this.tag102Label);
+            this.panel4.Controls.Add(this.tag101Label);
             this.panel4.Controls.Add(this.button1);
+            this.panel4.Controls.Add(this.tag100Label);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel4.Location = new System.Drawing.Point(186, 10);
             this.panel4.Margin = new System.Windows.Forms.Padding(4);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(489, 500);
+            this.panel4.Size = new System.Drawing.Size(837, 708);
             this.panel4.TabIndex = 7;
             this.panel4.Paint += new System.Windows.Forms.PaintEventHandler(this.panel4_Paint);
             // 
@@ -176,62 +178,97 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // panel5
-            // 
-            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel5.Controls.Add(this.tag103Label);
-            this.panel5.Controls.Add(this.tag102Label);
-            this.panel5.Controls.Add(this.tag101Label);
-            this.panel5.Controls.Add(this.tag100Label);
-            this.panel5.Controls.Add(this.button2);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(675, 10);
-            this.panel5.Margin = new System.Windows.Forms.Padding(4);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(392, 500);
-            this.panel5.TabIndex = 8;
-            // 
-            // tag100Label
-            // 
-            this.tag100Label.AutoSize = true;
-            this.tag100Label.Location = new System.Drawing.Point(92, 50);
-            this.tag100Label.Name = "tag100Label";
-            this.tag100Label.Size = new System.Drawing.Size(45, 16);
-            this.tag100Label.TabIndex = 2;
-            this.tag100Label.Text = "label1";
-            // 
-            // tag101Label
-            // 
-            this.tag101Label.AutoSize = true;
-            this.tag101Label.Location = new System.Drawing.Point(92, 71);
-            this.tag101Label.Name = "tag101Label";
-            this.tag101Label.Size = new System.Drawing.Size(45, 16);
-            this.tag101Label.TabIndex = 3;
-            this.tag101Label.Text = "label1";
-            // 
-            // tag102Label
-            // 
-            this.tag102Label.AutoSize = true;
-            this.tag102Label.Location = new System.Drawing.Point(92, 92);
-            this.tag102Label.Name = "tag102Label";
-            this.tag102Label.Size = new System.Drawing.Size(45, 16);
-            this.tag102Label.TabIndex = 4;
-            this.tag102Label.Text = "label1";
-            // 
             // tag103Label
             // 
             this.tag103Label.AutoSize = true;
-            this.tag103Label.Location = new System.Drawing.Point(92, 114);
+            this.tag103Label.Location = new System.Drawing.Point(47, 93);
             this.tag103Label.Name = "tag103Label";
             this.tag103Label.Size = new System.Drawing.Size(45, 16);
             this.tag103Label.TabIndex = 5;
             this.tag103Label.Text = "label1";
             // 
+            // tag102Label
+            // 
+            this.tag102Label.AutoSize = true;
+            this.tag102Label.Location = new System.Drawing.Point(47, 71);
+            this.tag102Label.Name = "tag102Label";
+            this.tag102Label.Size = new System.Drawing.Size(45, 16);
+            this.tag102Label.TabIndex = 4;
+            this.tag102Label.Text = "label1";
+            // 
+            // tag101Label
+            // 
+            this.tag101Label.AutoSize = true;
+            this.tag101Label.Location = new System.Drawing.Point(47, 50);
+            this.tag101Label.Name = "tag101Label";
+            this.tag101Label.Size = new System.Drawing.Size(45, 16);
+            this.tag101Label.TabIndex = 3;
+            this.tag101Label.Text = "label1";
+            // 
+            // tag100Label
+            // 
+            this.tag100Label.AutoSize = true;
+            this.tag100Label.Location = new System.Drawing.Point(47, 29);
+            this.tag100Label.Name = "tag100Label";
+            this.tag100Label.Size = new System.Drawing.Size(45, 16);
+            this.tag100Label.TabIndex = 2;
+            this.tag100Label.Text = "label1";
+            // 
+            // temperatureChart
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.temperatureChart.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.temperatureChart.Legends.Add(legend1);
+            this.temperatureChart.Location = new System.Drawing.Point(27, 376);
+            this.temperatureChart.Name = "temperatureChart";
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series1.Legend = "Legend1";
+            series1.Name = "Tag1";
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series2.Legend = "Legend1";
+            series2.Name = "Tag2";
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series3.Legend = "Legend1";
+            series3.Name = "Tag3";
+            this.temperatureChart.Series.Add(series1);
+            this.temperatureChart.Series.Add(series2);
+            this.temperatureChart.Series.Add(series3);
+            this.temperatureChart.Size = new System.Drawing.Size(750, 280);
+            this.temperatureChart.TabIndex = 6;
+            this.temperatureChart.Text = "chart1";
+            title1.Name = "Temperature v sistemu [°C]";
+            this.temperatureChart.Titles.Add(title1);
+            this.temperatureChart.Click += new System.EventHandler(this.temperatureChart_Click);
+            // 
+            // button2
+            // 
+            this.button2.BackgroundImage = global::WindowsFormsApp5.Properties.Resources.gear_empty;
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button2.Location = new System.Drawing.Point(75, 72);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(327, 224);
+            this.button2.TabIndex = 7;
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.button2);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel5.Location = new System.Drawing.Point(1023, 10);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(346, 708);
+            this.panel5.TabIndex = 8;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.ClientSize = new System.Drawing.Size(1369, 762);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
@@ -249,8 +286,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.temperatureChart)).EndInit();
             this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -258,14 +296,12 @@
         #endregion
 
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button buttonOpenGrafana;
         private System.Windows.Forms.Button buttonNodeRedWeb;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label labelDateandTime;
         private System.Windows.Forms.Panel panel6;
@@ -273,5 +309,8 @@
         private System.Windows.Forms.Label tag102Label;
         private System.Windows.Forms.Label tag101Label;
         private System.Windows.Forms.Label tag100Label;
+        private System.Windows.Forms.DataVisualization.Charting.Chart temperatureChart;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Panel panel5;
     }
 }

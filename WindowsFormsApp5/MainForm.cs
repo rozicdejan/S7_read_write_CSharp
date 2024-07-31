@@ -1,8 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 using S7.Net;
+using Newtonsoft.Json;
 
 namespace WindowsFormsApp5
 {
@@ -12,9 +16,13 @@ namespace WindowsFormsApp5
         private CancellationTokenSource _cancellationTokenSource;
         private System.Windows.Forms.Timer timerClock;
 
+        //public object JsonConvert { get; private set; }
+
         public MainForm()
         {
+           // InitializeChart();
             InitializeComponent();
+            SetupChart();
             button1.MouseEnter += new EventHandler(button1_MouseEnter);
             button1.MouseLeave += new EventHandler(button1_MouseLeave);
 
@@ -24,7 +32,84 @@ namespace WindowsFormsApp5
             timerClock = new System.Windows.Forms.Timer();
             timerClock.Interval = 500; // .5 second
             timerClock.Tick += new EventHandler(this.timerClock_Tick);
+            
         }
+        private void SetupChart()
+        {
+
+            // Configure the existing chart
+            var chartArea = temperatureChart.ChartAreas[0];
+            chartArea.AxisX.Title = "Time";
+            chartArea.AxisY.Title = "Temperature (°C)";
+
+            // Set X-Axis to DateTime
+            chartArea.AxisX.LabelStyle.Format = "HH:mm:ss";
+            chartArea.AxisX.IntervalType = DateTimeIntervalType.Minutes;
+            chartArea.AxisX.Interval = 10;
+            chartArea.AxisX.MajorGrid.LineColor = System.Drawing.Color.LightGray;
+            chartArea.AxisY.MajorGrid.LineColor = System.Drawing.Color.LightGray;
+
+
+            // Configure each series
+            foreach (var series in temperatureChart.Series)
+            {
+                series.ChartType = SeriesChartType.Line;
+                //series.Color = System.Drawing.Color.White; // Change the series color as needed
+                series.BorderWidth = 2; // Make the series lines bold
+            }
+
+        }
+        public class ChartDataPoint
+        {
+            public string SeriesName { get; set; }
+            public DateTime XValue { get; set; }
+            public double YValue { get; set; }
+        }
+
+        private void SaveChartData()
+        {
+            List<ChartDataPoint> dataPoints = new List<ChartDataPoint>();
+
+            foreach (var series in temperatureChart.Series)
+            {
+                foreach (var point in series.Points)
+                {
+                    dataPoints.Add(new ChartDataPoint
+                    {
+                        SeriesName = series.Name,
+                        XValue = DateTime.FromOADate(point.XValue),
+                        YValue = point.YValues[0]
+                    });
+                }
+            }
+
+            string filePath = "chartData.json";
+            File.WriteAllText(filePath, JsonConvert.SerializeObject(dataPoints));
+        }
+        private void LoadChartData()
+        {
+            string filePath = "chartData.json";
+            if (File.Exists(filePath))
+            {
+                string jsonData = File.ReadAllText(filePath);
+                var dataPoints = JsonConvert.DeserializeObject<List<ChartDataPoint>>(jsonData);
+
+                temperatureChart.Series["Tag1"].Points.Clear();
+                temperatureChart.Series["Tag2"].Points.Clear();
+                temperatureChart.Series["Tag3"].Points.Clear();
+
+                foreach (var dataPoint in dataPoints)
+                {
+                    temperatureChart.Series[dataPoint.SeriesName].Points.AddXY(dataPoint.XValue, dataPoint.YValue);
+                }
+
+                temperatureChart.ChartAreas[0].RecalculateAxesScale();
+                temperatureChart.Update();
+            }
+        }
+
+
+
 
         private async void MainForm_Load(object sender, EventArgs e)
         {
@@ -34,6 +119,9 @@ namespace WindowsFormsApp5
             // Update time in footer
             UpdateDateTime();
             timerClock.Start();
+
+            LoadChartData();
+
 
             try
             {
@@ -64,7 +152,7 @@ namespace WindowsFormsApp5
             {
                 _plc.Close();
             }
-
+            SaveChartData();
             // Clean up background tasks
             _cancellationTokenSource?.Dispose();
 
@@ -101,7 +189,11 @@ namespace WindowsFormsApp5
                     // Update the UI with the data if the form is not disposed
                     if (!IsDisposed)
                     {
-                        this.Invoke(new Action(() => DisplayData(data)));
+                        this.Invoke(new Action(() =>
+                        {
+                            DisplayData(data);
+                            UpdateChart(data);
+                        }));
                     }
 
                     // Wait for a short period before the next read
@@ -193,6 +285,68 @@ namespace WindowsFormsApp5
             {
                 labelDateandTime.Text = DateTime.Now.ToString("d-M-yyyy HH:mm");
             }
+        }
+
+        private void InitializeChart()
+        {
+            
+          temperatureChart = new Chart();
+          temperatureChart.Dock = DockStyle.Fill;
+          this.Controls.Add(temperatureChart);
+
+         ChartArea chartArea = new ChartArea();
+         temperatureChart.ChartAreas.Add(chartArea);
+
+         Series series1 = new Series("Tag1");
+         series1.ChartType = SeriesChartType.Line;
+         temperatureChart.Series.Add(series1);
+
+         Series series2 = new Series("Tag2");
+         series2.ChartType = SeriesChartType.Line;
+         temperatureChart.Series.Add(series2);
+
+         Series series3 = new Series("Tag3");
+         series3.ChartType = SeriesChartType.Line;
+         temperatureChart.Series.Add(series3);
+
+            // Set X-Axis to DateTime
+            //temperatureChart.ChartAreas[0].AxisX.LabelStyle.Format = "HH:mm:ss";
+            //temperatureChart.ChartAreas[0].AxisX.IntervalType = DateTimeIntervalType.Seconds;
+            //temperatureChart.ChartAreas[0].AxisX.Interval = 1;
+           // temperatureChart.ChartAreas[0].AxisX.MajorGrid.LineColor = System.Drawing.Color.LightGray;
+           // temperatureChart.ChartAreas[0].AxisY.MajorGrid.LineColor = System.Drawing.Color.LightGray;
+        }
+        private void UpdateChart(GlobalData.PlcDataRead data)
+        {
+            DateTime now = DateTime.Now;
+
+            // Add new data points
+            temperatureChart.Series["Tag1"].Points.AddXY(now, data.Tag1);
+            temperatureChart.Series["Tag2"].Points.AddXY(now, data.Tag2);
+            temperatureChart.Series["Tag3"].Points.AddXY(now, data.Tag3);
+
+            // Keep the chart with a fixed number of points to avoid performance issues
+            int maxPoints = 1800;
+            foreach (var series in temperatureChart.Series)
+            {
+                while (series.Points.Count > maxPoints)
+                {
+                    series.Points.RemoveAt(0);
+                }
+            }
+
+            // Adjust the X-axis to scroll with the data
+            var chartArea = temperatureChart.ChartAreas[0];
+            chartArea.AxisX.Minimum = DateTime.Now.AddSeconds(-maxPoints).ToOADate();
+            chartArea.AxisX.Maximum = DateTime.Now.ToOADate();
+
+            temperatureChart.ChartAreas[0].RecalculateAxesScale(); // Ensure axis scales are updated
+            temperatureChart.Update(); // Redraw the chart smoothly
+        }
+
+        private void temperatureChart_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
