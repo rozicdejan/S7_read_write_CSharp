@@ -148,5 +148,8 @@
   <ItemGroup>
     <None Include="Resources\progressive-stamping-tool.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Strip-layout-of-multi-station-progressive-die-for-complex-automotive-structure-part.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

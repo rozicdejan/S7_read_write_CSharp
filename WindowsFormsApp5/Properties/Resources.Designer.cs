@@ -149,5 +149,16 @@ namespace WindowsFormsApp5.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Strip_layout_of_multi_station_progressive_die_for_complex_automotive_structure_part {
+            get {
+                object obj = ResourceManager.GetObject("Strip-layout-of-multi-station-progressive-die-for-complex-automotive-structure-pa" +
+                        "rt", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }
