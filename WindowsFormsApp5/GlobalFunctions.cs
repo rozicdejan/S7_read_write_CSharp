@@ -12,7 +12,7 @@ namespace WindowsFormsApp5
     {
         //WEB
         //open web page
-        public static  void OpenBrowser_webpage(string webpage)
+        public static  void OpenBrowser_webpage (string webpage)
         {
             OpenBrowser(webpage);
         }

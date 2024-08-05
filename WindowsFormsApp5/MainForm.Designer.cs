@@ -28,69 +28,48 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            this.buttonOpenGrafana = new System.Windows.Forms.Button();
-            this.buttonNodeRedWeb = new System.Windows.Forms.Button();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.labelDateandTime = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
             this.tag100Label = new System.Windows.Forms.Label();
             this.tag101Label = new System.Windows.Forms.Label();
             this.tag102Label = new System.Windows.Forms.Label();
             this.temperatureChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tag103Label = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.buttonOpenGrafana = new System.Windows.Forms.Button();
+            this.buttonNodeRedWeb = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.panel6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panel3.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.temperatureChart)).BeginInit();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // buttonOpenGrafana
-            // 
-            this.buttonOpenGrafana.Location = new System.Drawing.Point(12, 6);
-            this.buttonOpenGrafana.Margin = new System.Windows.Forms.Padding(4);
-            this.buttonOpenGrafana.Name = "buttonOpenGrafana";
-            this.buttonOpenGrafana.Size = new System.Drawing.Size(165, 58);
-            this.buttonOpenGrafana.TabIndex = 2;
-            this.buttonOpenGrafana.Text = "Grafana WEB";
-            this.buttonOpenGrafana.UseVisualStyleBackColor = true;
-            this.buttonOpenGrafana.Click += new System.EventHandler(this.buttonOpenGrafana_Click);
-            // 
-            // buttonNodeRedWeb
-            // 
-            this.buttonNodeRedWeb.Location = new System.Drawing.Point(12, 71);
-            this.buttonNodeRedWeb.Margin = new System.Windows.Forms.Padding(4);
-            this.buttonNodeRedWeb.Name = "buttonNodeRedWeb";
-            this.buttonNodeRedWeb.Size = new System.Drawing.Size(165, 59);
-            this.buttonNodeRedWeb.TabIndex = 3;
-            this.buttonNodeRedWeb.Text = "NodeRed WEB";
-            this.buttonNodeRedWeb.UseVisualStyleBackColor = true;
-            this.buttonNodeRedWeb.Click += new System.EventHandler(this.buttonNodeRedWeb_Click);
             // 
             // panel1
             // 
@@ -125,16 +104,6 @@
             this.labelDateandTime.TabIndex = 1;
             this.labelDateandTime.Text = "##-##-#### ##:##";
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackgroundImage = global::WindowsFormsApp5.Properties.Resources.dafra_logo_noDAFRA;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(154, 6);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(30, 30);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
@@ -146,32 +115,6 @@
             this.panel2.Size = new System.Drawing.Size(1921, 10);
             this.panel2.TabIndex = 5;
             // 
-            // panel3
-            // 
-            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Controls.Add(this.buttonOpenGrafana);
-            this.panel3.Controls.Add(this.buttonNodeRedWeb);
-            this.panel3.Controls.Add(this.button1);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel3.Location = new System.Drawing.Point(0, 10);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(186, 946);
-            this.panel3.TabIndex = 6;
-            // 
-            // button1
-            // 
-            this.button1.BackgroundImage = global::WindowsFormsApp5.Properties.Resources.gear_empty;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button1.Location = new System.Drawing.Point(142, 906);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(35, 31);
-            this.button1.TabIndex = 0;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // panel5
             // 
             this.panel5.Controls.Add(this.button2);
@@ -180,17 +123,6 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(650, 946);
             this.panel5.TabIndex = 8;
-            // 
-            // button2
-            // 
-            this.button2.BackgroundImage = global::WindowsFormsApp5.Properties.Resources.gear_empty;
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button2.Location = new System.Drawing.Point(75, 72);
-            this.button2.Margin = new System.Windows.Forms.Padding(4);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(327, 224);
-            this.button2.TabIndex = 7;
-            this.button2.UseVisualStyleBackColor = true;
             // 
             // tag100Label
             // 
@@ -241,32 +173,32 @@
             // 
             this.temperatureChart.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea1.Name = "ChartArea1";
-            this.temperatureChart.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.temperatureChart.Legends.Add(legend1);
+            chartArea2.Name = "ChartArea1";
+            this.temperatureChart.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.temperatureChart.Legends.Add(legend2);
             this.temperatureChart.Location = new System.Drawing.Point(6, 657);
             this.temperatureChart.Name = "temperatureChart";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series1.Legend = "Legend1";
-            series1.Name = "Tag1";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series2.Legend = "Legend1";
-            series2.Name = "Tag2";
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series3.Legend = "Legend1";
-            series3.Name = "Tag3";
-            this.temperatureChart.Series.Add(series1);
-            this.temperatureChart.Series.Add(series2);
-            this.temperatureChart.Series.Add(series3);
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series4.Legend = "Legend1";
+            series4.Name = "Tag1";
+            series5.ChartArea = "ChartArea1";
+            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series5.Legend = "Legend1";
+            series5.Name = "Tag2";
+            series6.ChartArea = "ChartArea1";
+            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series6.Legend = "Legend1";
+            series6.Name = "Tag3";
+            this.temperatureChart.Series.Add(series4);
+            this.temperatureChart.Series.Add(series5);
+            this.temperatureChart.Series.Add(series6);
             this.temperatureChart.Size = new System.Drawing.Size(1071, 280);
             this.temperatureChart.TabIndex = 6;
             this.temperatureChart.Text = "chart1";
-            title1.Name = "Temperature v sistemu [°C]";
-            this.temperatureChart.Titles.Add(title1);
+            title2.Name = "Temperature v sistemu [°C]";
+            this.temperatureChart.Titles.Add(title2);
             this.temperatureChart.Click += new System.EventHandler(this.temperatureChart_Click);
             // 
             // tag103Label
@@ -298,18 +230,6 @@
             this.panel4.TabIndex = 7;
             this.panel4.Paint += new System.Windows.Forms.PaintEventHandler(this.panel4_Paint);
             // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox3.BackColor = System.Drawing.Color.White;
-            this.pictureBox3.BackgroundImage = global::WindowsFormsApp5.Properties.Resources.Strip_layout_of_multi_station_progressive_die_for_complex_automotive_structure_part;
-            this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pictureBox3.Location = new System.Drawing.Point(6, 483);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(1071, 110);
-            this.pictureBox3.TabIndex = 11;
-            this.pictureBox3.TabStop = false;
-            // 
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.Color.White;
@@ -322,11 +242,26 @@
             this.panel7.Controls.Add(this.tag100Label);
             this.panel7.Controls.Add(this.tag101Label);
             this.panel7.Controls.Add(this.tag102Label);
-            this.panel7.Location = new System.Drawing.Point(6, 7);
+            this.panel7.Location = new System.Drawing.Point(6, 79);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(1071, 458);
             this.panel7.TabIndex = 8;
             this.panel7.Paint += new System.Windows.Forms.PaintEventHandler(this.panel7_Paint);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Gainsboro;
+            this.label4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label4.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(507, 359);
+            this.label4.MinimumSize = new System.Drawing.Size(2, 45);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(161, 45);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "Temperatura  okolice";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label4.UseCompatibleTextRendering = true;
             // 
             // label3
             // 
@@ -373,6 +308,29 @@
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label1.UseCompatibleTextRendering = true;
             // 
+            // button2
+            // 
+            this.button2.BackgroundImage = global::WindowsFormsApp5.Properties.Resources.gear_empty;
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button2.Location = new System.Drawing.Point(75, 72);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(327, 224);
+            this.button2.TabIndex = 7;
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox3.BackColor = System.Drawing.Color.White;
+            this.pictureBox3.BackgroundImage = global::WindowsFormsApp5.Properties.Resources.Strip_layout_of_multi_station_progressive_die_for_complex_automotive_structure_part;
+            this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pictureBox3.Location = new System.Drawing.Point(6, 542);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(1071, 110);
+            this.pictureBox3.TabIndex = 11;
+            this.pictureBox3.TabStop = false;
+            // 
             // pictureBox2
             // 
             this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -385,25 +343,85 @@
             this.pictureBox2.TabIndex = 7;
             this.pictureBox2.TabStop = false;
             // 
-            // label4
+            // panel3
             // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Gainsboro;
-            this.label4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label4.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(507, 359);
-            this.label4.MinimumSize = new System.Drawing.Size(2, 45);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(161, 45);
-            this.label4.TabIndex = 11;
-            this.label4.Text = "Temperatura  okolice";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label4.UseCompatibleTextRendering = true;
+            this.panel3.BackColor = System.Drawing.Color.LightGreen;
+            this.panel3.BackgroundImage = global::WindowsFormsApp5.Properties.Resources._43540;
+            this.panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.label5);
+            this.panel3.Controls.Add(this.buttonOpenGrafana);
+            this.panel3.Controls.Add(this.buttonNodeRedWeb);
+            this.panel3.Controls.Add(this.button1);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel3.Location = new System.Drawing.Point(0, 10);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(186, 946);
+            this.panel3.TabIndex = 6;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Yu Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label5.Location = new System.Drawing.Point(11, 14);
+            this.label5.MinimumSize = new System.Drawing.Size(158, 50);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(158, 50);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "Bljižnice";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // buttonOpenGrafana
+            // 
+            this.buttonOpenGrafana.Location = new System.Drawing.Point(12, 79);
+            this.buttonOpenGrafana.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonOpenGrafana.Name = "buttonOpenGrafana";
+            this.buttonOpenGrafana.Size = new System.Drawing.Size(165, 58);
+            this.buttonOpenGrafana.TabIndex = 2;
+            this.buttonOpenGrafana.Text = "Grafana WEB";
+            this.buttonOpenGrafana.UseVisualStyleBackColor = true;
+            this.buttonOpenGrafana.Click += new System.EventHandler(this.buttonOpenGrafana_Click);
+            // 
+            // buttonNodeRedWeb
+            // 
+            this.buttonNodeRedWeb.Location = new System.Drawing.Point(12, 144);
+            this.buttonNodeRedWeb.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonNodeRedWeb.Name = "buttonNodeRedWeb";
+            this.buttonNodeRedWeb.Size = new System.Drawing.Size(165, 59);
+            this.buttonNodeRedWeb.TabIndex = 3;
+            this.buttonNodeRedWeb.Text = "NodeRed WEB";
+            this.buttonNodeRedWeb.UseVisualStyleBackColor = true;
+            this.buttonNodeRedWeb.Click += new System.EventHandler(this.buttonNodeRedWeb_Click);
+            // 
+            // button1
+            // 
+            this.button1.BackgroundImage = global::WindowsFormsApp5.Properties.Resources.gear_empty;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button1.Location = new System.Drawing.Point(142, 906);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(35, 31);
+            this.button1.TabIndex = 0;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = global::WindowsFormsApp5.Properties.Resources.dafra_logo_noDAFRA;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Location = new System.Drawing.Point(154, 6);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(30, 30);
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::WindowsFormsApp5.Properties.Resources._43540;
             this.ClientSize = new System.Drawing.Size(1921, 1000);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel4);
@@ -419,15 +437,16 @@
             this.panel1.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.panel3.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.temperatureChart)).EndInit();
             this.panel4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -458,5 +477,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
     }
 }

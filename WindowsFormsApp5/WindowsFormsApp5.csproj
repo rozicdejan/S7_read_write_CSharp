@@ -151,5 +151,8 @@
   <ItemGroup>
     <None Include="Resources\Strip-layout-of-multi-station-progressive-die-for-complex-automotive-structure-part.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\43540.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
