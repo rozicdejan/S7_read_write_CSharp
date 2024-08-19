@@ -35,15 +35,15 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.labelPlcPingStaus = new System.Windows.Forms.Label();
             this.labelPlcConnectionStatus = new System.Windows.Forms.Label();
             this.pictureBoxPlcPing = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBoxPlcConnectionstatus = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPlcPing)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPlcPing)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPlcConnectionstatus)).BeginInit();
             this.SuspendLayout();
             // 
@@ -69,7 +69,6 @@
             this.labelStatus.Size = new System.Drawing.Size(201, 16);
             this.labelStatus.TabIndex = 1;
             this.labelStatus.Text = "Checking if device is accesible...";
-            //this.labelStatus.Click += new System.EventHandler(this.labelStatus_Click);
             // 
             // progressBar1
             // 
@@ -98,9 +97,19 @@
             this.panel1.Size = new System.Drawing.Size(399, 440);
             this.panel1.TabIndex = 3;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = global::WindowsFormsApp5.Properties.Resources.logo;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Location = new System.Drawing.Point(39, 153);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(316, 131);
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.panel2.BackColor = System.Drawing.Color.LimeGreen;
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.panel2.Location = new System.Drawing.Point(399, 0);
@@ -137,16 +146,6 @@
             this.pictureBoxPlcPing.TabIndex = 7;
             this.pictureBoxPlcPing.TabStop = false;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackgroundImage = global::WindowsFormsApp5.Properties.Resources.logo;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(39, 153);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(316, 131);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
             // pictureBoxPlcConnectionstatus
             // 
             this.pictureBoxPlcConnectionstatus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -177,8 +176,8 @@
             this.Text = "SplashScreen";
             this.Load += new System.EventHandler(this.SplashScreen_Load);
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPlcPing)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPlcPing)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPlcConnectionstatus)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
