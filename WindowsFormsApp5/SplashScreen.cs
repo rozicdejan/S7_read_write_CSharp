@@ -29,6 +29,8 @@ namespace WindowsFormsApp5
         {
             timer1.Enabled = true;
             buttonCheckGoogle.Visible = false;
+            //green vertical panel - change color
+            panel2.BackColor = GlobalData.mySpecialColor.ColorGreen;
         }
 
         private void SplashScreen_FormClosing(object sender, FormClosingEventArgs e)
@@ -165,6 +167,11 @@ namespace WindowsFormsApp5
         private void timer2_Tick(object sender, EventArgs e)
         {
             CheckConnections();
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
