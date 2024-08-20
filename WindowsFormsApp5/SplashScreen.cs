@@ -31,6 +31,7 @@ namespace WindowsFormsApp5
             buttonCheckGoogle.Visible = false;
             //green vertical panel - change color
             panel2.BackColor = GlobalData.mySpecialColor.ColorGreen;
+            label1.Text = "Last used PLC addr:" + Properties.Settings.Default.plcipAddr;
         }
 
         private void SplashScreen_FormClosing(object sender, FormClosingEventArgs e)
@@ -42,10 +43,10 @@ namespace WindowsFormsApp5
         bool plcPingable;
         private async void CheckConnections()
         {
-            bool googlePingable = await Task.Run(() => PingHost("google.com"));
-            plcPingable = await Task.Run(() => PingHost("192.168.33.100"));
+            bool googlePingable = await Task.Run(() => PingHost(Properties.Settings.Default.plcipAddr));
+            plcPingable = await Task.Run(() => PingHost(Properties.Settings.Default.plcipAddr));
 
-            bool isOnline = plcPingable;
+            bool isOnline = googlePingable;
             if (isOnline)
             {
                 plcConnect = await Task.Run(() => TestPlcConnection());
@@ -123,7 +124,7 @@ namespace WindowsFormsApp5
 
         private bool TestPlcConnection()
         {
-            using (var plc = new Plc(CpuType.S71200, "192.168.33.100", 0, 1))
+            using (var plc = new Plc(CpuType.S71200, Properties.Settings.Default.plcipAddr, 0, 1))
             {
                 try
                 {
@@ -170,6 +171,16 @@ namespace WindowsFormsApp5
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }

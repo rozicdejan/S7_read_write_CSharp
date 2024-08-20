@@ -35,28 +35,32 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.labelPlcPingStaus = new System.Windows.Forms.Label();
             this.labelPlcConnectionStatus = new System.Windows.Forms.Label();
-            this.pictureBoxPlcPing = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBoxPlcConnectionstatus = new System.Windows.Forms.PictureBox();
+            this.pictureBoxPlcPing = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPlcPing)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPlcConnectionstatus)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPlcPing)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonCheckGoogle
             // 
+            this.buttonCheckGoogle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonCheckGoogle.BackColor = System.Drawing.Color.WhiteSmoke;
             this.buttonCheckGoogle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonCheckGoogle.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.buttonCheckGoogle.Location = new System.Drawing.Point(553, 246);
+            this.buttonCheckGoogle.Location = new System.Drawing.Point(540, 315);
             this.buttonCheckGoogle.Name = "buttonCheckGoogle";
             this.buttonCheckGoogle.Size = new System.Drawing.Size(104, 38);
             this.buttonCheckGoogle.TabIndex = 0;
-            this.buttonCheckGoogle.Text = "PRIJAVA";
+            this.buttonCheckGoogle.Text = "Login";
             this.buttonCheckGoogle.UseVisualStyleBackColor = false;
             this.buttonCheckGoogle.Click += new System.EventHandler(this.buttonCheckGoogle_Click_1);
             // 
@@ -90,22 +94,14 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(399, 440);
             this.panel1.TabIndex = 3;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackgroundImage = global::WindowsFormsApp5.Properties.Resources.logo;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(39, 153);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(316, 131);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // panel2
             // 
@@ -138,14 +134,19 @@
             this.labelPlcConnectionStatus.TabIndex = 6;
             this.labelPlcConnectionStatus.Text = "PLC connection status...";
             // 
-            // pictureBoxPlcPing
+            // pictureBox2
             // 
-            this.pictureBoxPlcPing.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBoxPlcPing.Location = new System.Drawing.Point(413, 371);
-            this.pictureBoxPlcPing.Name = "pictureBoxPlcPing";
-            this.pictureBoxPlcPing.Size = new System.Drawing.Size(20, 20);
-            this.pictureBoxPlcPing.TabIndex = 7;
-            this.pictureBoxPlcPing.TabStop = false;
+            this.pictureBox2.BackColor = System.Drawing.Color.DimGray;
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pictureBox2.Image = global::WindowsFormsApp5.Properties.Resources.Orodje_1;
+            this.pictureBox2.Location = new System.Drawing.Point(404, 0);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(396, 284);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 9;
+            this.pictureBox2.TabStop = false;
             // 
             // pictureBoxPlcConnectionstatus
             // 
@@ -156,12 +157,45 @@
             this.pictureBoxPlcConnectionstatus.TabIndex = 8;
             this.pictureBoxPlcConnectionstatus.TabStop = false;
             // 
+            // pictureBoxPlcPing
+            // 
+            this.pictureBoxPlcPing.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBoxPlcPing.Location = new System.Drawing.Point(413, 371);
+            this.pictureBoxPlcPing.Name = "pictureBoxPlcPing";
+            this.pictureBoxPlcPing.Size = new System.Drawing.Size(20, 20);
+            this.pictureBoxPlcPing.TabIndex = 7;
+            this.pictureBoxPlcPing.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.BackgroundImage = global::WindowsFormsApp5.Properties.Resources.logo;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Location = new System.Drawing.Point(39, 153);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(316, 131);
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(3, 421);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(139, 13);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "PLC IP: ###.###.###.###";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
             // SplashScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBoxPlcConnectionstatus);
             this.Controls.Add(this.pictureBoxPlcPing);
             this.Controls.Add(this.labelPlcConnectionStatus);
@@ -177,9 +211,11 @@
             this.Text = "SplashScreen";
             this.Load += new System.EventHandler(this.SplashScreen_Load);
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPlcPing)).EndInit();
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPlcConnectionstatus)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPlcPing)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -199,5 +235,7 @@
         private System.Windows.Forms.Label labelPlcConnectionStatus;
         private System.Windows.Forms.PictureBox pictureBoxPlcPing;
         private System.Windows.Forms.PictureBox pictureBoxPlcConnectionstatus;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label label1;
     }
 }

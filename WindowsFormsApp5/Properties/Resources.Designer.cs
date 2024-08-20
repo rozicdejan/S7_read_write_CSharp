@@ -143,6 +143,46 @@ namespace WindowsFormsApp5.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Orodje_1 {
+            get {
+                object obj = ResourceManager.GetObject("Orodje 1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Orodje_11 {
+            get {
+                object obj = ResourceManager.GetObject("Orodje 11", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Orodje_2 {
+            get {
+                object obj = ResourceManager.GetObject("Orodje 2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Orodje_3 {
+            get {
+                object obj = ResourceManager.GetObject("Orodje 3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Posnetek_zaslona_2024_02_23_151959 {
             get {
                 object obj = ResourceManager.GetObject("Posnetek zaslona 2024-02-23 151959", resourceCulture);
@@ -163,10 +203,50 @@ namespace WindowsFormsApp5.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap SP_del_orodja {
+            get {
+                object obj = ResourceManager.GetObject("SP del orodja", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Strip_layout_of_multi_station_progressive_die_for_complex_automotive_structure_part {
             get {
                 object obj = ResourceManager.GetObject("Strip-layout-of-multi-station-progressive-die-for-complex-automotive-structure-pa" +
                         "rt", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Trak_1 {
+            get {
+                object obj = ResourceManager.GetObject("Trak 1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Trak_2 {
+            get {
+                object obj = ResourceManager.GetObject("Trak 2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ZG_del_orodja {
+            get {
+                object obj = ResourceManager.GetObject("ZG del orodja", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

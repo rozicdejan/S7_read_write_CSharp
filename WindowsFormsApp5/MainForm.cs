@@ -122,6 +122,9 @@ namespace WindowsFormsApp5
 
             LoadChartData();
 
+            //load resuses
+            updatePlcData();
+
 
             try
             {
@@ -138,6 +141,12 @@ namespace WindowsFormsApp5
             }
         }
 
+        private void updatePlcData()
+        {
+            textBoxPlcIp.Text = Properties.Settings.Default.plcipAddr;
+            btnSavePlcinfo.Enabled = false;
+        }
+
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             
@@ -146,7 +155,7 @@ namespace WindowsFormsApp5
 
             // Stop the timer
             timerClock.Stop();
-
+            
             // Ensure PLC is closed
             if (_plc != null && _plc.IsConnected)
             {
@@ -167,57 +176,100 @@ namespace WindowsFormsApp5
             short rack = GlobalData.PlcGlobalData.PLC_RACK;
             short slot = GlobalData.PlcGlobalData.PLC_POS;
             int timeoutMilliseconds = 3000; // 3 seconds
+            int reconnectAttempts = 3;
+            int reconnectDelay = 5000; // 5 seconds between attempts
 
-            Plc plc = new Plc(CpuType.S71200, ipAddress, rack, slot);
-            _plc = plc;
-
-            try
+            while (!cancellationToken.IsCancellationRequested)
             {
-                // Open PLC connection
-                await Task.Run(() => plc.Open(), cancellationToken);
+                Plc plc = new Plc(CpuType.S71200, ipAddress, rack, slot);
+                _plc = plc;
 
-                if (!plc.IsConnected)
+                try
                 {
-                    throw new Exception("Failed to connect to PLC.");
-                }
+                    // Attempt to open PLC connection
+                    await Task.Run(() => plc.Open(), cancellationToken);
 
-                while (!cancellationToken.IsCancellationRequested)
-                {
-                    // Perform PLC read operation
-                    var data = plc.ReadClass<GlobalData.PlcDataRead>(1, 0);
-
-                    // Update the UI with the data if the form is not disposed
-                    if (!IsDisposed)
+                    if (!plc.IsConnected)
                     {
-                        this.Invoke(new Action(() =>
-                        {
-                            DisplayData(data);
-                            UpdateChart(data);
-                        }));
+                        throw new Exception("Failed to connect to PLC.");
                     }
 
-                    // Wait for a short period before the next read
-                    await Task.Delay(1000, cancellationToken);
+                    //MessageBox.Show("PLC connected");
+
+                    while (plc.IsConnected && !cancellationToken.IsCancellationRequested)
+                    {
+                        // Perform PLC read operation
+                        labelConnectionStatus.Text = "Connected";
+                        var data = plc.ReadClass<GlobalData.PlcDataRead>(1, 0);
+
+                        // Update the UI with the data if the form is not disposed
+                        if (!IsDisposed)
+                        {
+                            this.Invoke(new Action(() =>
+                            {
+                                DisplayData(data);
+                                UpdateChart(data);
+                            }));
+                        }
+
+                        // Wait for a short period before the next read
+                        await Task.Delay(1000, cancellationToken);
+                    }
                 }
-            }
-            catch (OperationCanceledException)
-            {
-                // Handle task cancellation
-            }
-            catch (Exception ex)
-            {
-                // Handle errors
-                if (!IsDisposed)
+                catch (OperationCanceledException)
                 {
-                    this.Invoke(new Action(() => MessageBox.Show("Error reading data: " + ex.Message)));
+                    // Handle task cancellation
+                    break;
                 }
-            }
-            finally
-            {
-                // Ensure the connection is closed
-                if (plc.IsConnected)
+                catch (Exception ex)
                 {
-                    plc.Close();
+                    // Handle errors
+                    if (!IsDisposed)
+                    {
+                        this.Invoke(new Action(() => MessageBox.Show("Error reading data: " + ex.Message)));
+                    }
+                }
+                finally
+                {
+                    // Ensure the connection is closed
+                    if (plc.IsConnected)
+                    {
+                        plc.Close();
+                    }
+                }
+
+                // Attempt reconnection if the connection was lost
+                for (int i = 0; i < reconnectAttempts && !cancellationToken.IsCancellationRequested; i++)
+                {
+                    try
+                    {
+                        labelConnectionStatus.Text = "Disconnected";
+                        MessageBox.Show($"Attempting to reconnect to PLC (Attempt {i + 1})");
+                        await Task.Delay(reconnectDelay, cancellationToken);
+                        plc.Open();
+
+                        if (plc.IsConnected)
+                        {
+                            MessageBox.Show("Reconnected to PLC");
+                            labelConnectionStatus.Text = "Connected";
+                            
+                            break;
+                        }
+                    }
+                    catch
+                    {
+                        // Handle reconnection failure
+                        if (i == reconnectAttempts - 1)
+                        {
+                            MessageBox.Show("Failed to reconnect to PLC after multiple attempts.");
+                        }
+                    }
+                }
+
+                // If reconnection failed after all attempts, exit the loop
+                if (!plc.IsConnected)
+                {
+                    break;
                 }
             }
         }
@@ -227,10 +279,10 @@ namespace WindowsFormsApp5
             // Display the data on your form (e.g., in text boxes or labels)
             if (!IsDisposed)
             {
-                tag100Label.Text = data.Tag1.ToString() + " °C";
-                tag101Label.Text = data.Tag2.ToString() + " °C";
-                tag102Label.Text = data.Tag3.ToString() + " °C";
-                tag103Label.Text = data.Tag4.ToString() + " °C";
+               label10.Text = data.Tag1.ToString() + " °C";
+                label11.Text = data.Tag2.ToString() + " °C";
+                label12.Text = data.Tag3.ToString() + " °C";
+                label13.Text = data.Tag4.ToString() + " °C";
                 //tag5Label.Text = data.Tag5.ToString();
                 //tag6CheckBox.Checked = data.Tag6;
                 //tag7CheckBox.Checked = data.Tag7;
@@ -352,6 +404,32 @@ namespace WindowsFormsApp5
         private void panel7_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void pictureBox6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnEditPlcInfo_Click(object sender, EventArgs e)
+        {
+            btnEditPlcInfo.Enabled = false;
+            textBoxPlcIp.Enabled = true;
+            btnSavePlcinfo.Enabled = true;
+            
+            
+        }
+
+        private void btnSavePlcinfo_Click(object sender, EventArgs e)
+        {
+            btnSavePlcinfo.Enabled = false;
+            textBoxPlcIp.Enabled = false;
+            btnEditPlcInfo.Enabled = true;
+
+            Properties.Settings.Default.plcipAddr = textBoxPlcIp.Text;
+            Properties.Settings.Default.Save();
+
+            updatePlcData();
         }
     }
 }
